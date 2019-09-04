@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 16:20:09 by cspider           #+#    #+#             */
-/*   Updated: 2019/09/04 16:20:14 by cspider          ###   ########.fr       */
+/*   Created: 2019/09/04 09:14:42 by cspider           #+#    #+#             */
+/*   Updated: 2019/09/04 09:19:15 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (n == -2147483648)
+	char	*result;
+	char	*start;
+
+	if (!s1 && !s2)
+		return (NULL);
+	result = ft_strnew((s1 ? ft_strlen(s1) : 0) + (s2 ? ft_strlen(s2) : 0));
+	if ((start = result))
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_putnbr(147483648);
-		return ;
+		if (s1)
+			while (*s1)
+				*result++ = *s1++;
+		if (s2)
+			while (*s2)
+				*result++ = *s2++;
+		*result = '\0';
 	}
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = -n;
-	}
-	if (n >= 10)
-	{
-		ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
-	}
-	else
-		ft_putchar(n + '0');
+	return (start);
 }

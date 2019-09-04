@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/03 19:57:19 by cspider           #+#    #+#             */
-/*   Updated: 2019/09/04 13:22:20 by cspider          ###   ########.fr       */
+/*   Created: 2019/09/04 09:53:18 by cspider           #+#    #+#             */
+/*   Updated: 2019/09/04 09:56:57 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	unsigned char *dst_temp;
-	unsigned char *src_temp;
+	char	*h;
+	size_t	needle_len;
+	size_t	j;
+	size_t	i;
 
-	if (!dst && !src)
+	h = (char *)haystack;
+	if (!(needle_len = ft_strlen(needle)))
+		return (h);
+	if (ft_strlen(haystack) < needle_len || len < needle_len)
 		return (NULL);
-	dst_temp = (unsigned char *)dst;
-	src_temp = (unsigned char *)src;
-	if (dst_temp < src_temp)
-		while (len--)
-			*dst_temp++ = *src_temp++;
-	else
+	i = 0;
+	while (h[i] && i <= len - needle_len)
 	{
-		dst_temp += len;
-		src_temp += len;
-		while (len--)
-			*--dst_temp = *--src_temp;
+		j = 0;
+		while (needle[j] && needle[j] == h[i + j])
+			j++;
+		if (j == needle_len)
+			return (&h[i]);
+		i++;
 	}
-	return (dst);
+	return (NULL);
 }
