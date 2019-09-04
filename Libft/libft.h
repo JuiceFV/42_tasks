@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 13:00:02 by cspider           #+#    #+#             */
-/*   Updated: 2019/09/04 12:34:13 by cspider          ###   ########.fr       */
+/*   Updated: 2019/09/04 21:15:37 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int					ft_isalpha(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+char				*ft_itoa(int n);
 void				*ft_memalloc(size_t size);
 char				*ft_strnew(size_t size);
 void				ft_lstadd(t_list **alst, t_list *new);
@@ -89,5 +90,6 @@ char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 void				ft_putendl_fd(char const *s, int fd);
+int					getone(void);
 
 #endif
