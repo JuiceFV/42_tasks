@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 22:07:26 by cspider           #+#    #+#             */
-/*   Updated: 2019/09/20 18:30:49 by cspider          ###   ########.fr       */
+/*   Updated: 2019/09/24 20:15:23 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,41 @@ size_t	ntoa_long_long(t_printf_format frmt, unsigned long long value)
 
 size_t	ftoa(t_printf_format frmt, double value)
 {
-	char 					buf[PRINTF_FTOA_BUFFER_SIZE];
-	size_t					len;
-	double					diff;
-	static	double			pow10[10];
-	int						whole;
-	double					tmp;
-	unsigned	long		frac;
-	unsigned	int			count;
+	char					buf[PRINTF_FTOA_BUFFER_SIZE];
+	t_ftoa_var				obj;
+	size_t					ret;
 
-	len = 0U;
-	diff = 0.0;
-	set_pow10(pow10);
+	frmt.len = 0U;
+	obj.diff = 0.0;
+	set_pow10(obj.pow10);
+	ret = ftoa_test_for_special_values(frmt, value, &obj.ftfsv_flag);
+	if (obj.ftfsv_flag != 1)
+		return (ret);
+	obj.negative = (value < 0);
+	value = obj.negative ? 0 - value : value;
+	prec_ftoa(&frmt, &frmt.len, buf);
+	obj.whole = (int)value;
+	obj.tmp = (value - obj.whole) * obj.pow10[frmt.prec];
+	obj.frac = (unsigned long)obj.tmp;
+	obj.diff = obj.tmp - obj.frac;
+	diff_checker_ftoa(&obj, frmt);
+	repartition(&obj, buf, &frmt, value);
+	repartition_2(&obj, &frmt, buf);
+	return (out_rev(frmt, buf));
+}
+
+size_t	etoa(t_printf_format frmt, double value)
+{
+	t_etoa_var obj;
+
+	if ((value != value) || (value > DBL_MAX) || (value < -DBL_MAX))
+		return (ftoa(frmt, value));
+	obj.neg = (value < 0);
+	value = obj.neg ? -value : value;
+	if (!(frmt.flags & FLAGS_PRECISION))
+		frmt.prec = PRINTF_DEFAULT_FLOAT_PRECISION;
+	exp_compute(&obj, value);
+	exp_format_1(&obj, value, &frmt);
+	exp_format_2(&obj, &value, &frmt);
+	return (frmt.index);
 }

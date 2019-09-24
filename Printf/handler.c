@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 17:12:31 by cspider           #+#    #+#             */
-/*   Updated: 2019/09/20 18:28:35 by cspider          ###   ########.fr       */
+/*   Updated: 2019/09/22 16:26:55 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,39 @@ void	set_pow10(double pow10[])
 	pow10[7] = 10000000;
 	pow10[8] = 100000000;
 	pow10[9] = 1000000000;
+}
+
+size_t	ftoa_test_for_special_values(t_printf_format frmt, double value,
+										int *flag)
+{
+	if (value != value)
+	{
+		frmt.len = 3;
+		return (out_rev(frmt, "nan"));
+	}
+	if (value < -DBL_MAX)
+	{
+		frmt.len = 4;
+		return (out_rev(frmt, "fni-"));
+	}
+	if (value > DBL_MAX)
+	{
+		frmt.len = (frmt.flags & FLAGS_PLUS) ? 4U : 3U;
+		return (out_rev(frmt, (frmt.flags & FLAGS_PLUS) ? "fni+" : "fni"));
+	}
+	if ((value > PRINTF_MAX_FLOAT) || (value < -PRINTF_MAX_FLOAT))
+		return (etoa(frmt, value));
+	*flag = 1;
+	return (0U);
+}
+
+void	prec_ftoa(t_printf_format *frmt, size_t *len, char buf[])
+{
+	if (!(frmt->flags & FLAGS_PRECISION))
+		frmt->prec = PRINTF_DEFAULT_FLOAT_PRECISION;
+	while ((*len < PRINTF_FTOA_BUFFER_SIZE) && (frmt->prec > 9U))
+	{
+		buf[(*len)++] = '0';
+		frmt->prec--;
+	}
 }
