@@ -153,7 +153,7 @@ inline	void		out_func(char c, void *buffer,
 size_t              out_rev(t_printf_format frmt,
 						const char *buf);
 /*
-** --------------------- Out-Format handler -------------------------------- ** 
+** --------------------- Out-Format handler -------------------------------- **
 ** 1| internal itoa format													 **
 ** 2| internal itoa for 'long' type											 **
 ** 3| internal itoa for 'long long' type									 **
@@ -179,13 +179,16 @@ void				prec_ftoa(t_printf_format *frmt, size_t *len,
 						char buf[]);
 
 void				diff_checker_ftoa(t_ftoa_var *obj, t_printf_format frmt);
-void				repartition(t_ftoa_var *obj, char buf[], 
+void				repartition(t_ftoa_var *obj, char buf[],
 						t_printf_format *fmrt, double value);
 void				repartition_2(t_ftoa_var *obj, t_printf_format *frmt,
 						char buf[]);
 void				exp_compute(t_etoa_var *obj, double value);
 void				exp_format_1(t_etoa_var *obj, double value, t_printf_format *frmt);
 void				exp_format_2(t_etoa_var *obj, double *value, t_printf_format *frmt);
+void 				evaluate_specifier(const char **format, t_printf_format *frmt);
+void 				pass_to_ntoa_ll(t_printf_format frmt, long long value);
+void 				pass_to_ntoa_l(t_printf_format frmt, long value);
 /*
 ** colors for bonus
 */
