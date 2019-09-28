@@ -1,0 +1,8 @@
+﻿  Checking Build System
+  CMake is re-running because D:/Projects/42_tasks/Printf_2/build/CMakeFiles/generate.stamp is out-of-date.
+    the file 'D:/Projects/42_tasks/Printf_2/CMakeLists.txt'
+    is newer than 'D:/Projects/42_tasks/Printf_2/build/CMakeFiles/generate.stamp.depend'
+    result='-1'
+  -- Configuring done
+  -- Generating done
+  -- Build files have been written to: D:/Projects/42_tasks/Printf_2/build

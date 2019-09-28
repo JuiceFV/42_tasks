@@ -33,8 +33,7 @@ static void evaluate_width_and_prec(t_printf_format* frmt)
 	if (ft_isdigit(*frmt->format))
 	{
 		str_width = ft_atoi(frmt->format);
-		frmt->min_length = str_width & ((1 - str_width) >> 31) |
-			1 & (~(1 - str_width) >> 31);
+		frmt->min_length = MAX(1, ft_atoi(frmt->format));
 		while (ft_isdigit(*frmt->format))
 			frmt->format++;
 	}
@@ -61,6 +60,8 @@ static void	evaluate_subspecifiers(t_printf_format *frmt)
 			frmt->flags |= FLAGS_INTMAX;
 		else if (*frmt->format == 'z')
 			frmt->flags |= FLAGS_SIZE_T;
+		else if (*frmt->format == 'L')
+			frmt->flags |= FLAGS_LONG_LONG;
 		else
 			break ;
 		frmt->format++;
@@ -72,8 +73,29 @@ static void	evaluate_specifiers(t_printf_format* frmt)
 	frmt->character = *frmt->format;
 	if (frmt->character == 's')
 		(frmt->flags & FLAGS_LONG || frmt->flags & FLAGS_LONG_LONG) ?
-		put_wchar_str(p) : put_char_str(p);
+		put_wchar_str(frmt) : put_char_str(frmt);
+	else if (ft_strchr("dDi", frmt->character))
+		putnbr(frmt);
+	else if (frmt->character == 'f' || frmt->character == 'F')
+		(frmt->flags & FLAGS_PRECISION && ! frmt->precision) ? putnbr(frmt) : pf_putdouble(frmt);
+	else if (frmt->character == 'c' || frmt->character == 'C')
+		pf_character(frmt, va_arg(frmt->ap, unsigned));
+	else if (ft_strchr("oOuUbBxX", frmt->character))
+		pf_putnb_base(ft_strchri_lu(".b..ou..x", frmt->character, -1) << 1, frmt);
+	else if (frmt->character == 'S')
+		pf_putwstr(frmt);
+	else if (frmt->character == 'p')
+		print_pointer_address(frmt);
+	else if (frmt->character == 'n')
+		*va_arg(frmt->ap, int *) = frmt->length;
+	else if (frmt->character == 'm')
+		ft_printf_putstr(STRERR(errno), frmt);
+	else if (frmt->character == '{')
+		color(frmt);
+	else
+		cs_not_found(frmt);
 }
+
 
 void	evaluate_format(t_printf_format *frmt)
 {
@@ -88,5 +110,5 @@ void	evaluate_format(t_printf_format *frmt)
 		frmt->flags &= ~FLAGS_SPACE;
 	if (ft_strchr("CDSUOBX", *frmt->format))
 		frmt->flags |= (*frmt->format != 'X') ? FLAGS_LONG : FLAGS_UPPERCASE;
-
+	evaluate_specifiers(frmt);
 }
