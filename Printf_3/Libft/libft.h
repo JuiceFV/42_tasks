@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 13:00:02 by cspider           #+#    #+#             */
-/*   Updated: 2019/09/17 22:04:21 by cspider          ###   ########.fr       */
+/*   Updated: 2019/09/29 14:39:19 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct		s_list
 
 int					ft_isdigit(int c);
 int					ft_atoi(const char *str);
-void				ft_bzero(void *s, size_t n)
+void				ft_bzero(void *s, size_t n);
 int					ft_isalpha(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
@@ -51,7 +51,7 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
-void				*ft_memchr(const void *mem, const unsigned char c, size_t n)
+void				*ft_memchr(const void *mem, const unsigned char c, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
@@ -67,7 +67,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
 char				*ft_strcat(char *s1, const char *s2);
-char				*ft_strchr(const char *s, int c)
+char				*ft_strchr(const char *s, int c);
 void				ft_strclr(char *s);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strcpy(char *dst, const char *src);

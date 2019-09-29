@@ -60,6 +60,7 @@ SRCS = ft_memset.c \
 		   ft_getone.c \
 		   ft_pow.c \
 		   ft_wcharlen.c \
+		   ft_wstrlen.c \
 		   ft_get_char_index.c 
 OBJ = $(patsubst %.c, %.o, $(SRCS))
 CFLAGS = -Wall -Wextra -Werror -c
