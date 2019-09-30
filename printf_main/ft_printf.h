@@ -1,11 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/30 12:50:39 by cspider           #+#    #+#             */
+/*   Updated: 2019/09/30 13:40:51 by cspider          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
 # include "../Libft/libft.h"
 # include <stdarg.h>
 
+#define NEW_SPECIFIER (t_specifier){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, 0, 0, 0, -1}
+
 typedef struct  s_specifiers
 {
+	int			dollar_size;
+	int			quote;
+	int			size;
     int         precision;
 }               t_specifiers;
 /*
