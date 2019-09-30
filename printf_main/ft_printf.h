@@ -17,24 +17,6 @@
 # include <stdarg.h>
 
 #define NEW_SPECIFIER (t_specifier){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, 0, 0, 0, -1}
-/*
-** Simple vector
-*/
-typedef struct	s_vector
-{
-	void*		data;
-	size_t		size;
-	size_t		type_size;
-}				t_vector;
-/*
-** Constructor
-*/
-# define VECTOR(T) (t_vector){NULL, 0, 0, sizeof(T)}
-
-t_vector		vector_new(size_t type_size);
-t_vector		vector_alloc(size_t type_size);
-int				vector_append(t_vector *this, void const *data, size_t datalen);
-
 
 typedef struct  s_specifiers
 {
