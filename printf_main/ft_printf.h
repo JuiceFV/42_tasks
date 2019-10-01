@@ -6,17 +6,17 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 12:50:39 by cspider           #+#    #+#             */
-/*   Updated: 2019/09/30 15:23:27 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/01 20:09:03 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../Libft/libft.h"
+# include "libft.h"
 # include <stdarg.h>
 
-#define NEW_SPECIFIER (t_specifier){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, 0, 0, 0, -1}
+# define NEW_SPECIFIER (t_specifiers){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, 0, 0, 0, -1}
 
 typedef struct  s_specifiers
 {
@@ -38,6 +38,7 @@ typedef struct  s_specifiers
 	int				dollar_size;
 	int				quote;
 	int				size;
+	int				sp_index;
     int         	precision;
 }               t_specifiers;
 /*

@@ -6,13 +6,13 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 14:29:46 by cspider           #+#    #+#             */
-/*   Updated: 2019/09/30 14:31:00 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/01 18:47:08 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		is_in(char i, char const *str)
+int		char_index(char i, char const *str)
 {
 	char const	*p = str;
 
