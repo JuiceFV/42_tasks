@@ -64,4 +64,6 @@ int             ft_vdprintf(int fd, char const *format, va_list ap);
 */
 int				char_index(char i, char const *str);
 
+char 			*next_spec(char const *s, t_vector *frmt)
+
 #endif
