@@ -6,14 +6,14 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 12:51:42 by cspider           #+#    #+#             */
-/*   Updated: 2019/09/30 15:05:57 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/01 20:17:28 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static const char	*evaluate_prec(const char *s,
-                                    t_specifier *sp, va_list ap)
+                                    t_specifiers *sp, va_list ap)
 {
     if (*s == '*')
     {
@@ -27,7 +27,7 @@ static const char	*evaluate_prec(const char *s,
 }
 
 static const char	*evaluate_size(char const *s,
-							t_specifier *sp, va_list ap)
+							t_specifiers *sp, va_list ap)
 {
 	va_list	temp;
 	int		nsize;
@@ -58,7 +58,7 @@ static const char	*evaluate_size(char const *s,
 
 static	void		set_len_modifier(char c, char *lm)
 {
-	if (c == 'h' && *lem == 'h')
+	if (c == 'h' && *lm == 'h')
 		*lm = ft_toupper(c);
 	else if (c == 'l' && *lm == 'l')
 		*lm = '7';
@@ -66,24 +66,24 @@ static	void		set_len_modifier(char c, char *lm)
 		*lm = c;
 }
 
-static const char	match(char const *s, t_specifier *sp, va_list ap)
+static const char	*match(char const *s, t_specifiers *sp, va_list ap)
 {
 	*sp = NEW_SPECIFIER;
-	while (*(++s))
+	while (*(++s) != '\0')
 	{
 		if (*s == '.')
-			s = evaluate_prec(s + 1, sp, va) - 1;
+			s = evaluate_prec(s + 1, sp, ap) - 1;
 		else if (*s == '\'')
-			sp->qoute = 1;
+			sp->quote = 1;
 		else if (*s == '$')
 		{
 			sp->dollar_size = sp->size;
 			sp->size = 0;
 		}
-		else if (ft_isdigit(*s) || *s == '*')
-			s = evaluate_size(s, sp, va) - 1;
+		else if ((*s >= '1' && *s <= '9') || *s == '*')
+			s = evaluate_size(s, sp, ap) - 1;
 		else if ((char_index(*s, "0+- #_")) >= 0)
-			sp->flags[char_index(*s, "0+- #_")] = 1;
+			sp->flags.f[char_index(*s, "0+- #_")] = 1;
 		else if ((char_index(*s, "hljztL")) >= 0)
 			set_len_modifier(*s, &(sp->len_mod));
 		else if ((sp->conv = *s))
@@ -92,3 +92,31 @@ static const char	match(char const *s, t_specifier *sp, va_list ap)
 	return (s);
 }
 
+int					ft_vasprintf(char **ret, char const *s, va_list ap)
+{
+	t_vector		frmt;
+	t_specifiers	sp;
+	va_list			frmt_ap;
+
+	va_copy(frmt_ap, ap);
+	frmt = VECTOR(char);
+	while (*s != '\0')
+	{
+		if (*s == '%')
+		{
+			s = match(s, &sp, frmt_ap);
+			if (sp.conv && evaluate_all(&sp, &frmt, ap, frmt_ap) == -1)
+			{
+				ft_vector_resize(&frmt, sp.sp_index);
+				ft_vector_trim(&frmt);
+				*ret = frmt.data;
+				return (-1);
+			}
+			sp.sp_index = frmt.size;
+		}
+		s = next_spec(s, &frmt);
+	}
+	ft_vector_trim(&frmt);
+	*ret = frmt.data;
+	return (frmt.size - 1);
+}
