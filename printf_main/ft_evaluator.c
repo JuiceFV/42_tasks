@@ -43,9 +43,9 @@ char 	*next_spec(char const *s, t_vector *frmt)
 	c = (char*)s;
 	while (*c != '\0' && *c != '%')
 		c++;
-	if (p != s)
-		ft_vector_append(frmt, (void *)c, p - s);
-	return (p);
+	if (c != s)
+		ft_vector_append(frmt, (void *)s, c - s);
+	return (c);
 }
 
 static	void	eval_prec(t_specifiers *sp, t_vector *frmt, va_list ap)
@@ -65,5 +65,51 @@ static	void	eval_prec(t_specifiers *sp, t_vector *frmt, va_list ap)
 	{
 		while (len < sp->precision && ++len)
 			ft_vector_append(frmt, "0", 1);
+		ft_vector_segswap(frmt, w_after - width, w_after);
 	}
+	if (sp->size)
+	{
+		sp->size = (sp->size < 0) ? -sp->size : sp->size;
+		sp->flags.n.minus = 1;
+	}
+	return (len);
+}
+
+static	void	handle_dollar(t_specifiers *sp, va_list ap, va_list frmt_ap)
+{
+	if (sp->dollar_size)
+	{
+		va_copy(frmt_ap, ap);
+		while (--(sp->dollar_size) > 0)
+			va_arg(frmt_ap, void *);
+	}
+}
+
+int				evaluate_all(t_specifiers *sp, t_vector *frmt,
+							va_list ap, va_list frmt_ap)
+{
+	size_t w_before;
+	size_t w_after;
+	int		width;
+	int		len;
+
+	handle_dollar(sp, ap, frmt_ap);
+	w_before = frmt->size;
+	width = eval_prec(sp, frmt, frmt_ap);
+	w_after = frmt->size;
+	len = w_after - w_before;
+	if (len <= sp->size && width != -1)
+	{
+		if (sp->flags.n.zero && sp->precision <= -1 && !sp->flags.n.minus)
+			while (len < sp->size && ++len)
+				ft_vector_append(frmt, "0", 1);
+		else
+			while (len < sp->size && ++len)
+				ft_vector_append(frmt, " ", 1);
+		if (sp->flags.n.zero && sp->precision <= -1 && !sp->flags.n.minus)
+			w_before = w_after - width;
+		if (!sp->flags.n.minus)
+			ft_vector_segswap(frmt, w_before, w_after);
+	}
+	return (width);
 }
