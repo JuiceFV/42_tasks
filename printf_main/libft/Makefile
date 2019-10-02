@@ -84,7 +84,8 @@ FT_VEC_SRC:= ft_vec_alloc \
 			 ft_vec_new \
 			 ft_vec_popindex \
 			 ft_vec_reserve \
-			 ft_vec_string 
+			 ft_vec_string \
+			 ft_vec_segswap
 
 FILES:= get_next_line
 

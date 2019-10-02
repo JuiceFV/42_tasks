@@ -81,4 +81,5 @@ int				ft_vector_replace(t_vector *this, size_t index, size_t length,
 char			*ft_vector_string(t_vector *this, char *(*f)(void *));
 int				ft_vector_resize(t_vector *this, size_t new_size);
 void			ft_vector_clear(t_vector *this);
+void			ft_vector_segswap(t_vector *this, size_t w_before, size_t w_after);
 #endif
