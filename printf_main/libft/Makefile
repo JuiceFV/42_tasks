@@ -87,6 +87,9 @@ FT_VEC_SRC:= ft_vec_alloc \
 			 ft_vec_string \
 			 ft_vec_segswap
 
+FT_WCH_PATH:= ft_wchar/
+FT_WCH_SRC:= wchar 
+
 FILES:= get_next_line
 
 #==========================
@@ -115,6 +118,7 @@ FILES+=$(addprefix $(FT_LST_PATH),$(FT_LST_SRC))
 FILES+=$(addprefix $(FT_MAT_PATH),$(FT_MAT_SRC))
 FILES+=$(addprefix $(FT_STR_PATH),$(FT_STR_SRC))
 FILES+=$(addprefix $(FT_MEM_PATH),$(FT_MEM_SRC))
+FILES+=$(addprefix $(FT_WCH_PATH),$(FT_WCH_SRC))
 
 SRC:=$(addprefix $(SRCPATH),$(addsuffix .c,$(FILES)))
 OBJ:=$(addprefix $(OBJPATH),$(addsuffix .o,$(FILES)))
@@ -144,6 +148,7 @@ $(CCHF):
 	@mkdir $(OBJPATH)$(FT_MAT_PATH)
 	@mkdir $(OBJPATH)$(FT_STR_PATH)
 	@mkdir $(OBJPATH)$(FT_MEM_PATH)
+	@mkdir $(OBJPATH)$(FT_WCH_PATH)
 	@touch $(CCHF)
 
 clean:

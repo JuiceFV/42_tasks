@@ -1,5 +1,5 @@
 #include "ft_vector.h"
-
+#include "libft.h"
 
 /*
 ** Array::_swap
@@ -25,7 +25,7 @@ static void		*save_calloc(size_t count, size_t size)
 
 void			ft_vector_segswap(t_vector *this, size_t w_before, size_t w_after)
 {
-	char			tmp;
+	char			*tmp;
 	const size_t	len = w_after - w_before;
 	const size_t	m = this->type_size;
 

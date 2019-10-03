@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 13:00:02 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/01 17:03:26 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/03 16:20:47 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include "ft_wchar.h"
 # include "ft_vector.h"
 # include "get_next_line.h"
 
@@ -28,6 +29,7 @@
 # define FT_INT_MAX			((int)(FT_UINT_MAX >> 1))
 # define FT_INT_MIN			((int)(~FT_INT_MAX))
 # define MIN(A,B)			((A) < (B) ? (A) : (B))
+# define ABS(A)				((A) < 0 ? -(A) : (A))
 
 typedef struct		s_list
 {
