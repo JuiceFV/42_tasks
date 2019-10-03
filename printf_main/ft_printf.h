@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 12:50:39 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/01 20:09:03 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/03 16:17:13 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,25 @@ int             ft_printf(const char *format, ...);
 */
 int             ft_vprintf(char const *format, va_list ap);
 int             ft_vdprintf(int fd, char const *format, va_list ap);
+int				ft_vasprintf(char **ret, char const *s, va_list ap);
 /*
 ** Helpful Utilits
 */
 int				char_index(char i, char const *str);
 
-char 			*next_spec(char const *s, t_vector *frmt)
+char 			*next_spec(char const *s, t_vector *frmt);
 int				evaluate_all(t_specifiers *sp, t_vector *frmt,
 							va_list ap, va_list frmt_ap);
+
+int				ev_di(t_specifiers *sp, t_vector *frmt, va_list ap);
+int				ev_u(t_specifiers *sp, t_vector *frmt, va_list ap);
+int				ev_x(t_specifiers *sp, t_vector *frmt, va_list ap);
+int				ev_cx(t_specifiers *sp, t_vector *frmt, va_list ap);
+int				ev_p(t_specifiers *sp, t_vector *frmt, va_list ap);
+int				signed_integer(t_specifiers *sp, t_vector *frmt,
+												va_list ap, int b);
+int				unsigned_integer(t_specifiers *sp, t_vector *frmt,
+												va_list ap, int b);
+
 
 #endif
