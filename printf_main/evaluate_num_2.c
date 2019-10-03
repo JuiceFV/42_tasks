@@ -68,11 +68,11 @@ int 	signed_integer(t_specifiers *sp, t_vector *frmt, va_list ap, int b)
 		ft_vector_append(frmt, "+", 1);
 	else if (sp->flags.n.space)
 		ft_vector_append(frmt, " ", 1);
-	if (arg == 0 && m->precision == 0)
+	if (arg == 0 && sp->precision == 0)
 		return (0);
 	res = pf_itoa_base(frmt, arg, ABS(b), b < 0);
 	if (sp->quote)
-		res += thousand_div(frmt, ',');
+		res += quote_div(frmt, ',');
 	return (res);
 }
 
@@ -90,6 +90,6 @@ int 	unsigned_integer(t_specifiers *sp, t_vector *frmt, va_list ap, int b)
 		return (0);
 	res = pf_itoa_base(frmt, arg, ABS(b), 2 | (b < 0));
 	if (sp->quote)
-		res += thousand_div(frmt, ',');
+		res += quote_div(frmt, ',');
 	return (res);
 }

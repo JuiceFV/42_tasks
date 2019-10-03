@@ -40,6 +40,6 @@ int	ev_p(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	(void)sp;
 	ft_vector_append(frmt, "0x", 2);
-	p->len_mod = '7';
+	sp->len_mod = '7';
 	return (unsigned_integer(sp, frmt, ap, 16));
 }
