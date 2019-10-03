@@ -74,6 +74,8 @@ int				ev_u(t_specifiers *sp, t_vector *frmt, va_list ap);
 int				ev_x(t_specifiers *sp, t_vector *frmt, va_list ap);
 int				ev_cx(t_specifiers *sp, t_vector *frmt, va_list ap);
 int				ev_p(t_specifiers *sp, t_vector *frmt, va_list ap);
+int				ev_c(t_specifiers *sp, t_vector *frmt, va_list ap);
+int				ev_ws(t_specifiers *sp, t_vector *frmt, va_list ap);
 int				signed_integer(t_specifiers *sp, t_vector *frmt,
 												va_list ap, int b);
 int				unsigned_integer(t_specifiers *sp, t_vector *frmt,
