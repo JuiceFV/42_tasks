@@ -43,3 +43,12 @@ int	ev_p(t_specifiers *sp, t_vector *frmt, va_list ap)
 	sp->len_mod = '7';
 	return (unsigned_integer(sp, frmt, ap, 16));
 }
+/*
+** TODO
+** Finished | +
+** Norme 	| -
+** Errors	| -
+** Logic 	| -
+** Checked	| -
+** included	| -
+*/
