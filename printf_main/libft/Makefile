@@ -90,7 +90,7 @@ FT_VEC_SRC:= ft_vec_alloc \
 FT_WCH_PATH:= ft_wchar/
 FT_WCH_SRC:= wchar 
 
-FILES:= get_next_line
+FILES:= ft_date get_next_line
 
 #==========================
 
