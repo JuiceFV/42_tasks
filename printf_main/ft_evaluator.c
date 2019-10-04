@@ -15,13 +15,13 @@
 static int	spec(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	int			i;
-	char const	s[] = "sSpdDioOuUxXcCbneEfFgGaAwWTyrqQm";
+	char const	s[] = "sSpdDioOuUxXcCbneEfFgGaAwWkyrqQm";
 	void *const t[] = {
 	&ev_s, &ev_ws, &ev_p, &ev_di, &ev_di, &ev_di,
 	&ev_o, &ev_o, &ev_u, &ev_u, &ev_x, &ev_cx,
 	&ev_c, &ev_wc, &ev_b, &ev_n, &ev_e, &ev_ce,
 	&ev_f, &ev_cf, &ev_g, &ev_cg, &ev_a, &ev_ca,
-	&ev_w, &ev_cw, &ev_ct, &ev_y, &ev_r, &ev_q,
+	&ev_w, &ev_cw, &ev_k, &ev_y, &ev_r, &ev_q,
 	&ev_cq, &ev_m};
 
 	if (char_index(sp->conv, "DOU") >= 0)
@@ -113,3 +113,14 @@ int				evaluate_all(t_specifiers *sp, t_vector *frmt,
 	}
 	return (width);
 }
+/*
+** TODO
+** Fixed date func. Recall wchar func's to %r.
+** Doesn't evaluated: ev_y, ev_r, ev_cr (i will rewrite this func's to wc, ws), ev_q, ev_cq, ev_m
+** Finished | -
+** Norme 	| -
+** Errors	| -
+** Logic 	| -
+** Checked	| -
+** included	| -
+*/
