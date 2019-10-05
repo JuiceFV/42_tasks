@@ -21,11 +21,11 @@ static void	time_format(t_vector *frmt, long *res_date)
 	ft_vector_append(frmt, ft_itoa(res_date[2]), ft_strlen(ft_itoa(res_date[2])));
 	ft_vector_append(frmt, ":", 1);
 	if (res_date[1] < 10)
-		ft_vector_append(frmt, "0");
+		ft_vector_append(frmt, "0", 1);
 	ft_vector_append(frmt, ft_itoa(res_date[1]), ft_strlen(ft_itoa(res_date[1])));
 	ft_vector_append(frmt, ":", 1);
 	if (res_date[0] < 10)
-		ft_vector_append(frmt, "0");
+		ft_vector_append(frmt, "0", 1);
 	ft_vector_append(frmt, ft_itoa(res_date[0]), ft_strlen(ft_itoa(res_date[0])));
 }
 

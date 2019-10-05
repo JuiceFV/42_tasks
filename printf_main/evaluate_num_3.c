@@ -33,7 +33,7 @@ int	_itoa_base(t_vector *frmt, intmax_t n, int b, char info)
 
 	(info & 1 ? "0123456789ABCDEF" : "0123456789abcdef");
 	res = 1;
-	if (info & 2 ? (uintmax_t)b <= n : n <= -b || b <= n)
+	if (info & 2 ? (uintmax_t)b <= ui_n : n <= -b || b <= n)
 		res += _itoa_base(frmt, (info & 2 ?
 			(intmax_t)(ui_n / b) : n / b), b, info);
 	ft_vector_append(frmt, (void *)(base +
@@ -52,7 +52,7 @@ int ev_o(t_specifiers *sp, t_vector *frmt, va_list ap)
 		sharp = 1;
 	}
 	sp->conv = 'o';
-	return (unsigned_integer(sp, frmt, ap, 8) + alt);
+	return (unsigned_integer(sp, frmt, ap, 8) + sharp);
 }
 
 /*

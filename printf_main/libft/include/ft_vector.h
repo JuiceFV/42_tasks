@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 16:20:21 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/01 20:00:58 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/05 13:16:09 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct	s_vector
 ** When reaching its capacity, an array will re-allocate memory,
 ** using this factor to grow relatively to its previous size.
 */
+
 # define VEC_FACTOR 2
 
 t_vector		ft_vector_new(size_t type_size);
@@ -81,5 +82,6 @@ int				ft_vector_replace(t_vector *this, size_t index, size_t length,
 char			*ft_vector_string(t_vector *this, char *(*f)(void *));
 int				ft_vector_resize(t_vector *this, size_t new_size);
 void			ft_vector_clear(t_vector *this);
-void			ft_vector_segswap(t_vector *this, size_t w_before, size_t w_after);
+void			ft_vector_segswap(t_vector *this, size_t w_before,
+													size_t w_after);
 #endif

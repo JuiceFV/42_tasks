@@ -61,7 +61,7 @@ int			ev_wc(t_specifiers *sp, t_vector *frmt, va_list ap)
 	res = ft_widetoa((char *)VECTOR_END(frmt), arg);
 	if (res == 0)
 		return (-1);
-	frmt->size + res;
+	frmt->size += res;
 	return ((int)res);
 }
 

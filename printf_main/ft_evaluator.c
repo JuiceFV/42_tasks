@@ -15,14 +15,13 @@
 static int	spec(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	int			i;
-	char const	s[] = "sSpdDioOuUxXcCbneEfFgGaAwWkyrqQm";
+	char const	s[] = "sSpdDioOuUxXcCbneEfFgGaAwWkm";
 	void *const t[] = {
 	&ev_s, &ev_ws, &ev_p, &ev_di, &ev_di, &ev_di,
 	&ev_o, &ev_o, &ev_u, &ev_u, &ev_x, &ev_cx,
 	&ev_c, &ev_wc, &ev_b, &ev_n, &ev_e, &ev_ce,
 	&ev_f, &ev_cf, &ev_g, &ev_cg, &ev_a, &ev_ca,
-	&ev_w, &ev_cw, &ev_k, &ev_y, &ev_r, &ev_q,
-	&ev_cq, &ev_m};
+	&ev_w, &ev_cw, &ev_k, &ev_m};
 
 	if (char_index(sp->conv, "DOU") >= 0)
 		sp->len_mod = 'l';
@@ -48,7 +47,7 @@ char 	*next_spec(char const *s, t_vector *frmt)
 	return (c);
 }
 
-static	void	eval_prec(t_specifiers *sp, t_vector *frmt, va_list ap)
+static	int	eval_prec(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	size_t w_before;
 	size_t w_after;

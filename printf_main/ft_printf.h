@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 12:50:39 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/03 16:17:13 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/05 17:05:12 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,10 @@ int				ev_ws(t_specifiers *sp, t_vector *frmt, va_list ap);
 /*
 ** num eval
 */
+int 			signed_double_g(t_specifiers *sp, t_vector *frmt,
+											long double arg, char *c);
+int 			signed_double_a(t_specifiers *sp, t_vector *frmt,
+											long double arg, char *c);
 int				signed_double_e(t_specifiers *sp, t_vector *frmt,
 										long double arg, char *c);
 int				_rtoa(t_vector *frmt, long double x, int b,
@@ -122,6 +126,8 @@ int				ev_cw(t_specifiers *sp, t_vector *frmt, va_list ap);
 ** date eval
 */
 int				ev_k(t_specifiers *sp, t_vector *frmt, va_list ap);
+
+int 			ev_m(t_specifiers *sp, t_vector *frmt, va_list ap);
 /*
 ** TODO
 ** Finished | +

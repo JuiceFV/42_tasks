@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_vec_segswap.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/05 13:11:41 by cspider           #+#    #+#             */
+/*   Updated: 2019/10/05 13:27:45 by cspider          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_vector.h"
 #include "libft.h"
 
@@ -13,7 +25,8 @@
 ** -swap(0, 4)->
 ** "-0000141592   "
 */
-static void		*save_calloc(size_t count, size_t size)
+
+static void	*save_calloc(size_t count, size_t size)
 {
 	void	*const res = malloc(count * size);
 
@@ -23,7 +36,7 @@ static void		*save_calloc(size_t count, size_t size)
 	return (res);
 }
 
-void			ft_vector_segswap(t_vector *this, size_t w_before, size_t w_after)
+void		ft_vector_segswap(t_vector *this, size_t w_before, size_t w_after)
 {
 	char			*tmp;
 	const size_t	len = w_after - w_before;
@@ -36,4 +49,3 @@ void			ft_vector_segswap(t_vector *this, size_t w_before, size_t w_after)
 	ft_memcpy(this->data + (this->size - len) * m, tmp, len * m);
 	free(tmp);
 }
-
