@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		char_index(char i, char const *str)
+int			char_index(char i, char const *str)
 {
 	char const	*p = str;
 
@@ -20,3 +20,39 @@ int		char_index(char i, char const *str)
 		p++;
 	return (*p == '\0' ? -1 : p - str);
 }
+
+double		fract_part(double num)
+{
+	long int		integral_part;
+
+	integral_part = (long int)num;
+	return (num - integral_part);
+}
+
+
+long int 	round_base(double x, double f, int b)
+{
+	double		half;
+	long int	r;
+
+	r = (long int)(f * 10 + 0.5);
+	half = ((double)b) / 2;
+	if (r < half)
+		return (x);
+	else
+	{
+		x = x + 1;
+		while (((long int)x) % (b / 10) != 0)
+			x = x + 1;
+		return (x);
+	}
+}
+/*
+** TODO
+** Finished | -
+** Norme 	| -
+** Errors	| -
+** Logic 	| -
+** Checked	| -
+** included	| -
+*/

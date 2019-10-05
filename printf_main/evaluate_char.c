@@ -58,9 +58,59 @@ int			ev_wc(t_specifiers *sp, t_vector *frmt, va_list ap)
 		return (-1);
 	if (MB_CUR_MAX == 1 && (arg >= 0x80 && arg < 0x100))
 		arg -= 256;
-	res = ft_widetoa((char *)ARRAY_END(d), arg);
+	res = ft_widetoa((char *)VECTOR_END(frmt), arg);
 	if (res == 0)
 		return (-1);
 	frmt->size + res;
 	return ((int)res);
 }
+
+int			ev_ws(t_specifiers *sp, t_vector *frmt, va_list ap)
+{
+	wchar_t *arg;
+	size_t	len;
+	wchar_t *ptr;
+
+	arg = va_arg(ap, wchar_t *);
+	if (arg == NULL)
+		arg = L"(null)";
+	ptr = arg;
+	while (*ptr)
+	{
+		if (wchar_exception(ptr) == -1)
+			return (-1);
+		ptr++;
+	}
+	ft_vector_reserve(frmt, 4 * (ptr - arg));
+	if (sp->precision >= 0)
+		len = ft_wstrnconv((char *)VECTOR_END(frmt), arg, sp->precision);
+	else
+		len = ft_wstrconv((char *)VECTOR_END(frmt), arg);
+	sp->precision = -1;
+	frmt->size += len;
+	return (len);
+}
+
+int			ev_c(t_specifiers *sp, t_vector *frmt, va_list ap)
+{
+	unsigned char 	arg;
+
+	(void)sp;
+	if (sp->len_mod == 'l')
+		return (ev_wc(sp, frmt, ap));
+	else
+		arg = (char)va_arg(ap, int);
+	sp->precision = -1;
+	ft_vector_append(frmt, (void *)&arg, 1);
+	return (1);
+}
+/*
+** TODO
+** rename ev_wc and ev_ws to ev_r and ev_cr
+** Finished | -
+** Norme 	| -
+** Errors	| -
+** Logic 	| -
+** Checked	| -
+** included	| -
+*/
