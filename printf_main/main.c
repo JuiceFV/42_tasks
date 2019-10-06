@@ -2,6 +2,8 @@
 
 int main()
 {
-	ft_printf("%d", 15);
+	ft_printf("{%Lf}", 1444565444646.6465424242242l);
+	printf("\n");
+	printf("{%Lf}", 1444565444646.6465424242242l);
 	return (0);
 }

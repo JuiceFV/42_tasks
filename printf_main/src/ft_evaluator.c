@@ -66,7 +66,7 @@ static	int	eval_prec(t_specifiers *sp, t_vector *frmt, va_list ap)
 			ft_vector_append(frmt, "0", 1);
 		ft_vector_segswap(frmt, w_after - width, w_after);
 	}
-	if (sp->size)
+	if (sp->size < 0 && sp->precision == -1)
 	{
 		sp->size = (sp->size < 0) ? -sp->size : sp->size;
 		sp->flags.n.minus = 1;
