@@ -6,13 +6,13 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 19:37:58 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/01 19:39:01 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/06 17:06:17 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	spec(t_specifiers *sp, t_vector *frmt, va_list ap)
+static int		spec(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	int			i;
 	char const	s[] = "sSpdDioOuUxXcCbneEfFgGaAwWkm";
@@ -35,9 +35,9 @@ static int	spec(t_specifiers *sp, t_vector *frmt, va_list ap)
 	return (1);
 }
 
-char 	*next_spec(char const *s, t_vector *frmt)
+char			*next_spec(char const *s, t_vector *frmt)
 {
-	char 	*c;
+	char	*c;
 
 	c = (char*)s;
 	while (*c != '\0' && *c != '%')
@@ -47,12 +47,12 @@ char 	*next_spec(char const *s, t_vector *frmt)
 	return (c);
 }
 
-static	int	eval_prec(t_specifiers *sp, t_vector *frmt, va_list ap)
+static int		eval_prec(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
-	size_t w_before;
-	size_t w_after;
-	int    width;
-	int	   len;
+	size_t	w_before;
+	size_t	w_after;
+	int		width;
+	int		len;
 
 	w_before = frmt->size;
 	width = spec(sp, frmt, ap);
@@ -74,7 +74,7 @@ static	int	eval_prec(t_specifiers *sp, t_vector *frmt, va_list ap)
 	return (len);
 }
 
-static	void	handle_dollar(t_specifiers *sp, va_list ap, va_list frmt_ap)
+static void		handle_dollar(t_specifiers *sp, va_list ap, va_list frmt_ap)
 {
 	if (sp->dollar_size)
 	{
@@ -87,8 +87,8 @@ static	void	handle_dollar(t_specifiers *sp, va_list ap, va_list frmt_ap)
 int				evaluate_all(t_specifiers *sp, t_vector *frmt,
 							va_list ap, va_list frmt_ap)
 {
-	size_t w_before;
-	size_t w_after;
+	size_t	w_before;
+	size_t	w_after;
 	int		width;
 	int		len;
 
@@ -112,10 +112,12 @@ int				evaluate_all(t_specifiers *sp, t_vector *frmt,
 	}
 	return (width);
 }
+
 /*
 ** TODO
 ** Fixed date func. Recall wchar func's to %r.
-** Doesn't evaluated: ev_y, ev_r, ev_cr (i will rewrite this func's to wc, ws), ev_q, ev_cq, ev_m
+** Doesn't evaluated: ev_y, ev_r, ev_cr
+** (i will rewrite this func's to wc, ws), ev_q, ev_cq, ev_m
 ** Finished | -
 ** Norme 	| -
 ** Errors	| -

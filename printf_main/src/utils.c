@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 14:29:46 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/01 18:47:08 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/06 17:07:21 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ double		fract_part(double num)
 	return (num - integral_part);
 }
 
-
-long int 	round_base(double x, double f, int b)
+long int	round_base(double x, double f, int b)
 {
 	double		half;
 	long int	r;

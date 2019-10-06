@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   evaluate_num_3.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olongbot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/06 16:44:33 by olongbot          #+#    #+#             */
+/*   Updated: 2019/10/06 16:52:10 by olongbot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int	quote_div(t_vector *frmt, char c)
+int		quote_div(t_vector *frmt, char c)
 {
 	t_vector	temp;
 	int			i;
@@ -22,16 +34,19 @@ int	quote_div(t_vector *frmt, char c)
 	}
 	return (i / 3);
 }
-/*
-** if first bit of info is on we using caps if second bit is on we using unsigned
-*/
-int	_itoa_base(t_vector *frmt, intmax_t n, int b, char info)
-{
-	int 				res;
-	const uintmax_t		ui_n = (uintmax_t)n;
-	const char *const	base = 
 
-	(info & 1 ? "0123456789ABCDEF" : "0123456789abcdef");
+/*
+** if first bit of info is on we using caps
+** if second bit is on we using unsigned
+*/
+
+int		_itoa_base(t_vector *frmt, intmax_t n, int b, char info)
+{
+	int					res;
+	const uintmax_t		ui_n = (uintmax_t)n;
+	const char *const	base = (info & 1 ? "0123456789ABCDEF"
+
+	: "0123456789abcdef");
 	res = 1;
 	if (info & 2 ? (uintmax_t)b <= ui_n : n <= -b || b <= n)
 		res += _itoa_base(frmt, (info & 2 ?
@@ -41,7 +56,7 @@ int	_itoa_base(t_vector *frmt, intmax_t n, int b, char info)
 	return (res);
 }
 
-int ev_o(t_specifiers *sp, t_vector *frmt, va_list ap)
+int		ev_o(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	int sharp;
 
@@ -59,7 +74,7 @@ int ev_o(t_specifiers *sp, t_vector *frmt, va_list ap)
 ** unsigned integer into binary representation bbbb.
 */
 
-int ev_b(t_specifiers *sp, t_vector *frmt, va_list ap)
+int		ev_b(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	if (sp->flags.n.sharp)
 		ft_vector_append(frmt, "b", 1);
@@ -70,7 +85,7 @@ int ev_b(t_specifiers *sp, t_vector *frmt, va_list ap)
 ** returns the number of characters written so far by this call to the function.
 */
 
-int ev_n(t_specifiers *sp, t_vector *frmt, va_list ap)
+int		ev_n(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	int *arg;
 

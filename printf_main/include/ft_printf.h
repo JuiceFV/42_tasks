@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 12:50:39 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/05 17:05:12 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/06 17:22:38 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 # define NEW_SPECIFIER (t_specifiers){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, 0, 0, 0, -1}
 
-typedef struct  s_specifiers
+typedef struct		s_specifiers
 {
 	union
 	{
-		char	f[6];
+		char		f[6];
 		struct
 		{
 			char	zero;
@@ -30,7 +30,7 @@ typedef struct  s_specifiers
 			char	minus;
 			char	space;
 			char	sharp;
-			char	underscore;	
+			char	underscore;
 		}			n;
 	}				flags;
 	char			conv;
@@ -39,17 +39,17 @@ typedef struct  s_specifiers
 	int				quote;
 	int				size;
 	int				sp_index;
-    int         	precision;
-}               t_specifiers;
+	int				precision;
+}					t_specifiers;
 /*
 ** main printf functions
 */
 
-int             ft_printf(const char *format, ...);
-int				ft_printfln(char const *format, ...);
-int				ft_dprintf(int fd, char const *format, ...);
-int				ft_asprintf(char **ret, char const *format, ...);
-char			*ft_rasprintf(int *res, char const *format, ...);
+int					ft_printf(const char *format, ...);
+int					ft_printfln(char const *format, ...);
+int					ft_dprintf(int fd, char const *format, ...);
+int					ft_asprintf(char **ret, char const *format, ...);
+char				*ft_rasprintf(int *res, char const *format, ...);
 /*
 ** Help functions:
 ** 1) vprintf() function is equivalent to the
@@ -61,73 +61,76 @@ char			*ft_rasprintf(int *res, char const *format, ...);
 ** and vfprintf(), except that its output to a file
 ** descriptor fd instead of to a stdio stream.
 */
-int             ft_vprintf(char const *format, va_list ap);
-int             ft_vdprintf(int fd, char const *format, va_list ap);
-int				ft_vasprintf(char **ret, char const *s, va_list ap);
+int					ft_vprintf(char const *format, va_list ap);
+int					ft_vdprintf(int fd, char const *format, va_list ap);
+int					ft_vasprintf(char **ret, char const *s, va_list ap);
 /*
 ** Helpful Utilits
 */
-int				char_index(char i, char const *str);
-double			fract_part(double num);
-long int 		round_base(double x, double f, int b);
+int					char_index(char i, char const *str);
+double				fract_part(double num);
+long int			round_base(double x, double f, int b);
 /*
 ** main eval func's
 */
-char 			*next_spec(char const *s, t_vector *frmt);
-int				evaluate_all(t_specifiers *sp, t_vector *frmt,
+char				*next_spec(char const *s, t_vector *frmt);
+int					evaluate_all(t_specifiers *sp, t_vector *frmt,
 							va_list ap, va_list frmt_ap);
 /*
 ** String/char eval
 */
-int				ev_c(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_s(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_wc(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_ws(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_c(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_s(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_wc(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_ws(t_specifiers *sp, t_vector *frmt, va_list ap);
 /*
 ** num eval
 */
-int 			signed_double_g(t_specifiers *sp, t_vector *frmt,
+int					signed_double_g(t_specifiers *sp, t_vector *frmt,
 											long double arg, char *c);
-int 			signed_double_a(t_specifiers *sp, t_vector *frmt,
+int					signed_double_a(t_specifiers *sp, t_vector *frmt,
 											long double arg, char *c);
-int				signed_double_e(t_specifiers *sp, t_vector *frmt,
-										long double arg, char *c);
-int				_rtoa(t_vector *frmt, long double x, int b,
-												t_specifiers *sp);
-int				signed_integer(t_specifiers *sp, t_vector *frmt,
-												va_list ap, int b);
-int				unsigned_integer(t_specifiers *sp, t_vector *frmt,
-												va_list ap, int b);
-int				quote_div(t_vector *frmt, char c);
-int				_itoa_base(t_vector *frmt, intmax_t n, int b,
+int					signed_double_e(t_specifiers *sp, t_vector *frmt,
+											long double arg, char *c);
+int					_rtoa(t_vector *frmt, long double x, int b,
+											t_specifiers *sp);
+int					signed_integer(t_specifiers *sp, t_vector *frmt,
+											va_list ap, int b);
+int					unsigned_integer(t_specifiers *sp, t_vector *frmt,
+											va_list ap, int b);
+int					quote_div(t_vector *frmt, char c);
+int					_itoa_base(t_vector *frmt, intmax_t n, int b,
 														char info);
-int 			ev_o(t_specifiers *sp, t_vector *frmt, va_list ap);
-int 			ev_b(t_specifiers *sp, t_vector *frmt, va_list ap);
-int 			ev_n(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_di(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_u(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_x(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_cx(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_p(t_specifiers *sp, t_vector *frmt, va_list ap);
-int 			ev_f(t_specifiers *sp, t_vector *frmt, va_list ap);
-int 			ev_cf(t_specifiers *sp, t_vector *frmt, va_list ap);
-int 			ev_e(t_specifiers *sp, t_vector *frmt, va_list ap);
-int 			ev_ce(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_g(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_cg(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_a(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_ca(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_o(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_b(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_n(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_di(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_u(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_x(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_cx(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_p(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_f(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_cf(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_e(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_ce(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_g(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_cg(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_a(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_ca(t_specifiers *sp, t_vector *frmt, va_list ap);
+
 /*
 ** color eval
 */
-int				ev_w(t_specifiers *sp, t_vector *frmt, va_list ap);
-int				ev_cw(t_specifiers *sp, t_vector *frmt, va_list ap);
+
+int					ev_w(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_cw(t_specifiers *sp, t_vector *frmt, va_list ap);
+
 /*
 ** date eval
 */
-int				ev_k(t_specifiers *sp, t_vector *frmt, va_list ap);
 
-int 			ev_m(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_k(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_m(t_specifiers *sp, t_vector *frmt, va_list ap);
 /*
 ** TODO
 ** Finished | +

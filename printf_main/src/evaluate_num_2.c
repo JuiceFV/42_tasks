@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 15:10:36 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/03 15:25:24 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/06 16:42:58 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static uintmax_t	get_arg_unsigned_integer(va_list ap, t_specifiers *sp)
 	return (arg);
 }
 
-int 	signed_integer(t_specifiers *sp, t_vector *frmt, va_list ap, int b)
+int					signed_integer(t_specifiers *sp,
+		t_vector *frmt, va_list ap, int b)
 {
 	intmax_t	arg;
 	int			res;
@@ -76,7 +77,8 @@ int 	signed_integer(t_specifiers *sp, t_vector *frmt, va_list ap, int b)
 	return (res);
 }
 
-int 	unsigned_integer(t_specifiers *sp, t_vector *frmt, va_list ap, int b)
+int					unsigned_integer(t_specifiers *sp,
+		t_vector *frmt, va_list ap, int b)
 {
 	uintmax_t	arg;
 	int			res;

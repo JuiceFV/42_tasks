@@ -6,13 +6,13 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 14:45:53 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/03 14:54:31 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/06 17:01:01 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ev_di(t_specifiers *sp, t_vector *frmt, va_list ap)
+int	ev_di(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	return (signed_integer(sp, frmt, ap, 10));
 }

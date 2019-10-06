@@ -6,24 +6,24 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 12:51:42 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/01 20:17:28 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/06 17:02:51 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static const char	*evaluate_prec(const char *s,
-                                    t_specifiers *sp, va_list ap)
+		t_specifiers *sp, va_list ap)
 {
-    if (*s == '*')
-    {
-        sp->precision = va_arg(ap, unsigned);
-        return (s + 1);
-    }
-    sp->precision = ft_atoi(s);
-    while (ft_isdigit(*s))
-        s++;
-    return (s);
+	if (*s == '*')
+	{
+		sp->precision = va_arg(ap, unsigned);
+		return (s + 1);
+	}
+	sp->precision = ft_atoi(s);
+	while (ft_isdigit(*s))
+		s++;
+	return (s);
 }
 
 static const char	*evaluate_size(char const *s,

@@ -6,13 +6,13 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 14:07:35 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/03 16:22:44 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/06 16:37:56 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ev_s(t_specifiers *sp, t_vector *frmt, va_list ap)
+int			ev_s(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	char	*arg;
 	int		res;
@@ -30,14 +30,14 @@ int	ev_s(t_specifiers *sp, t_vector *frmt, va_list ap)
 	return (res);
 }
 
-static	int	wchar_exception(wchar_t *c)
+static int	wchar_exception(wchar_t *c)
 {
-	if ((*c >= 0xD800 && *c <= 0xDBFF) || 
+	if ((*c >= 0xD800 && *c <= 0xDBFF) ||
 		(*c >= 0xDC00 && *c <= 0xDFFF) ||
 		(*c < 0) ||
 		(MB_CUR_MAX == 1 && *c >= 0x100))
 		return (-1);
-	if (MB_CUR_MAX == 1 && (*c >= 0x80 && *c <  0x100))
+	if (MB_CUR_MAX == 1 && (*c >= 0x80 && *c < 0x100))
 		*c -= 256;
 	return (1);
 }
@@ -51,7 +51,7 @@ int			ev_wc(t_specifiers *sp, t_vector *frmt, va_list ap)
 	arg = va_arg(ap, wint_t);
 	sp->precision = -1;
 	ft_vector_reserve(frmt, 4);
-	if ((arg >= 0xD800 && arg <= 0xDBFF) || 
+	if ((arg >= 0xD800 && arg <= 0xDBFF) ||
 		(arg >= 0xDC00 && arg <= 0xDFFF) ||
 		(arg < 0) ||
 		(MB_CUR_MAX == 1 && arg >= 0x100))
@@ -93,7 +93,7 @@ int			ev_ws(t_specifiers *sp, t_vector *frmt, va_list ap)
 
 int			ev_c(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
-	unsigned char 	arg;
+	unsigned char	arg;
 
 	(void)sp;
 	if (sp->len_mod == 'l')

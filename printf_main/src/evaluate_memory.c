@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   evaluate_memory.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olongbot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/06 16:40:53 by olongbot          #+#    #+#             */
+/*   Updated: 2019/10/06 16:41:05 by olongbot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static void putnbr_hex(int number, int rem, t_vector *frmt, int col)
+static void		putnbr_hex(int number, int rem, t_vector *frmt, int col)
 {
 	const char *base = "0123456789abcdef";
 
@@ -11,7 +23,7 @@ static void putnbr_hex(int number, int rem, t_vector *frmt, int col)
 		ft_vector_append(frmt, " ", 1);
 }
 
-static void	putchar_hex(unsigned char const c, t_vector *frmt)
+static void		putchar_hex(unsigned char const c, t_vector *frmt)
 {
 	if (c >= ' ' && c <= '~')
 		ft_vector_append(frmt, &c, 1);
@@ -19,7 +31,7 @@ static void	putchar_hex(unsigned char const c, t_vector *frmt)
 		ft_vector_append(frmt, ".", 1);
 }
 
-static void print_mem(const void *addr, size_t size, t_vector *frmt)
+static void		print_mem(const void *addr, size_t size, t_vector *frmt)
 {
 	const unsigned char *ptr = addr;
 	size_t				i;
@@ -46,7 +58,7 @@ static void print_mem(const void *addr, size_t size, t_vector *frmt)
 	}
 }
 
-int ev_m(t_specifiers *sp, t_vector *frmt, va_list ap)
+int				ev_m(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	int *arg;
 
