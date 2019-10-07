@@ -14,8 +14,8 @@ int	_rtoa(t_vector *frmt, long double x, int b, t_specifiers *sp)
 		return (res);
 	ft_vector_append(frmt, ".", 1);
 	i = -1;
-	frac = fract_part(x);
 	p = (sp->precision == -1 ? 13 : sp->precision);
+	frac = fract_part(x, p);
 	while (++i < p)
 	{
 		frac *= ABS(b);
