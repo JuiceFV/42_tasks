@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   evaluate_double_2.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/09 18:17:45 by cspider           #+#    #+#             */
+/*   Updated: 2019/10/09 18:20:16 by cspider          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int	ev_g(t_specifiers *sp, t_vector *frmt, va_list ap)
+int		ev_g(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	double arg;
 
@@ -22,7 +34,7 @@ int	ev_g(t_specifiers *sp, t_vector *frmt, va_list ap)
 	return (signed_double_g(sp, frmt, arg, "e"));
 }
 
-int	ev_cg(t_specifiers *sp, t_vector *frmt, va_list ap)
+int		ev_cg(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	double arg;
 
@@ -44,7 +56,7 @@ int	ev_cg(t_specifiers *sp, t_vector *frmt, va_list ap)
 	return (signed_double_g(sp, frmt, arg, "E"));
 }
 
-int	ev_a(t_specifiers *sp, t_vector *frmt, va_list ap)
+int		ev_a(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	double arg;
 
@@ -63,7 +75,7 @@ int	ev_a(t_specifiers *sp, t_vector *frmt, va_list ap)
 	return (signed_double_a(sp, frmt, arg, "p"));
 }
 
-int	ev_ca(t_specifiers *sp, t_vector *frmt, va_list ap)
+int		ev_ca(t_specifiers *sp, t_vector *frmt, va_list ap)
 {
 	double arg;
 
@@ -84,7 +96,7 @@ int	ev_ca(t_specifiers *sp, t_vector *frmt, va_list ap)
 	return (signed_double_a(sp, frmt, arg, "P"));
 }
 
-int	signed_double_e(t_specifiers *sp, t_vector *frmt,
+int		signed_double_e(t_specifiers *sp, t_vector *frmt,
 						long double arg, char *c)
 {
 	int res;
@@ -101,7 +113,7 @@ int	signed_double_e(t_specifiers *sp, t_vector *frmt,
 		arg /= 10;
 		e++;
 	}
-	res = _rtoa(frmt, ABS(arg), 10, sp);
+	res = rtoa(frmt, ABS(arg), 10, sp);
 	res += ft_vector_append(frmt, c, 1);
 	if (e >= 0)
 		res += ft_vector_append(frmt, "+", 1);
@@ -109,7 +121,7 @@ int	signed_double_e(t_specifiers *sp, t_vector *frmt,
 		res += ft_vector_append(frmt, "-", 1);
 	if (ABS(e) < 10)
 		res += ft_vector_append(frmt, "0", 1);
-	_itoa_base(frmt, e, 10, 0);
+	itoa_base(frmt, e, 10, 0);
 	return (res);
 }
 /*

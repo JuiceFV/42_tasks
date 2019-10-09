@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 15:10:36 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/06 16:42:58 by olongbot         ###   ########.fr       */
+/*   Updated: 2019/10/09 18:47:27 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int					signed_integer(t_specifiers *sp,
 		ft_vector_append(frmt, " ", 1);
 	if (arg == 0 && sp->precision == 0)
 		return (0);
-	res = _itoa_base(frmt, arg, ABS(b), b < 0);
+	res = itoa_base(frmt, arg, ABS(b), b < 0);
 	if (sp->quote)
 		res += quote_div(frmt, ',');
 	return (res);
@@ -90,7 +90,7 @@ int					unsigned_integer(t_specifiers *sp,
 	if ((arg == 0 && sp->precision == 0) ||
 	(arg == 0 && sp->conv == 'o' && sp->flags.n.sharp))
 		return (0);
-	res = _itoa_base(frmt, arg, ABS(b), 2 | (b < 0));
+	res = itoa_base(frmt, arg, ABS(b), 2 | (b < 0));
 	if (sp->quote)
 		res += quote_div(frmt, ',');
 	return (res);

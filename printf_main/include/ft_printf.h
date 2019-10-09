@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 12:50:39 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/06 17:22:38 by olongbot         ###   ########.fr       */
+/*   Updated: 2019/10/09 18:23:32 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "libft.h"
 # include <stdarg.h>
 
-# define NEW_SPECIFIER (t_specifiers){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, 0, 0, 0, -1}
+# define NEW_SPEC (t_specifiers){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, 0, 0, 0, -1}
+# define NEW_SPECIFIER NEW_SPEC
 
 typedef struct		s_specifiers
 {
@@ -92,14 +93,14 @@ int					signed_double_a(t_specifiers *sp, t_vector *frmt,
 											long double arg, char *c);
 int					signed_double_e(t_specifiers *sp, t_vector *frmt,
 											long double arg, char *c);
-int					_rtoa(t_vector *frmt, long double x, int b,
+int					rtoa(t_vector *frmt, long double x, int b,
 											t_specifiers *sp);
 int					signed_integer(t_specifiers *sp, t_vector *frmt,
 											va_list ap, int b);
 int					unsigned_integer(t_specifiers *sp, t_vector *frmt,
 											va_list ap, int b);
 int					quote_div(t_vector *frmt, char c);
-int					_itoa_base(t_vector *frmt, intmax_t n, int b,
+int					itoa_base(t_vector *frmt, intmax_t n, int b,
 														char info);
 int					ev_o(t_specifiers *sp, t_vector *frmt, va_list ap);
 int					ev_b(t_specifiers *sp, t_vector *frmt, va_list ap);

@@ -6,7 +6,7 @@
 /*   By: olongbot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:44:33 by olongbot          #+#    #+#             */
-/*   Updated: 2019/10/06 16:52:10 by olongbot         ###   ########.fr       */
+/*   Updated: 2019/10/09 18:23:16 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		quote_div(t_vector *frmt, char c)
 	{
 		ft_vector_append(&temp, VECTOR_LAST(frmt), 1);
 		ft_vector_pop_back(frmt, 1);
-		if (i % 3 == 0)
+		if (i % 3 == 0 && i != 0)
 			ft_vector_append(&temp, &c, 1);
 		i++;
 	}
@@ -40,7 +40,7 @@ int		quote_div(t_vector *frmt, char c)
 ** if second bit is on we using unsigned
 */
 
-int		_itoa_base(t_vector *frmt, intmax_t n, int b, char info)
+int		itoa_base(t_vector *frmt, intmax_t n, int b, char info)
 {
 	int					res;
 	const uintmax_t		ui_n = (uintmax_t)n;
@@ -49,7 +49,7 @@ int		_itoa_base(t_vector *frmt, intmax_t n, int b, char info)
 	: "0123456789abcdef");
 	res = 1;
 	if (info & 2 ? (uintmax_t)b <= ui_n : n <= -b || b <= n)
-		res += _itoa_base(frmt, (info & 2 ?
+		res += itoa_base(frmt, (info & 2 ?
 			(intmax_t)(ui_n / b) : n / b), b, info);
 	ft_vector_append(frmt, (void *)(base +
 		(info & 2 ? (size_t)(ui_n % b) : ABS(n % b))), 1);

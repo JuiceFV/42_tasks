@@ -21,18 +21,12 @@ int			char_index(char i, char const *str)
 	return (*p == '\0' ? -1 : p - str);
 }
 
-double		fract_part(double num, int prec)
+double		fract_part(double num)
 {
-	static const double pow10[] = {
-		1, 10, 100, 1000, 10000, 100000,
-		1000000, 10000000, 100000000,
-		1000000000, 10000000000, 100000000000,
-		1000000000000, 10000000000000};
-	int whole = (int)x;
-	double tmp = (x - whole) * pow10[prec];
-	unsigned long frac = (unsigned long)tmp;
-	x = frac / pow10[prec];
-	return (x);
+	long int		intpart;
+
+	intpart = (long int)num;
+	return (num - intpart);
 }
 
 long int	round_base(double x, double f, int b)

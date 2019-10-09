@@ -6,13 +6,13 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 13:28:51 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/05 17:05:17 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/09 18:22:46 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int finde(long double *arg, int *res, t_vector *frmt, int e)
+static int	finde(long double *arg, int *res, t_vector *frmt, int e)
 {
 	if (*arg < 100000 && *arg >= 0.0001)
 		return (e);
@@ -73,28 +73,30 @@ static int	findlp(long double *arg, int p)
 	return (p);
 }
 
-int	signed_double_g(t_specifiers *sp, t_vector *frmt, long double arg, char *c)
+int			signed_double_g(t_specifiers *sp,
+		t_vector *frmt, long double arg, char *c)
 {
 	int res;
 	int e;
 
 	e = 0;
 	e = finde(&arg, &res, frmt, e);
-	res = _rtoa(frmt, ABS(arg), 10, sp);
+	res = rtoa(frmt, ABS(arg), 10, sp);
 	ft_vector_pop_zero(frmt, &res);
 	if (e == 0)
-		res +=  ft_vector_append(frmt, c, 1);
+		res += ft_vector_append(frmt, c, 1);
 	if (e >= 0)
 		res += ft_vector_append(frmt, "+", 1);
 	else
 		res += ft_vector_append(frmt, "-", 1);
 	if (ABS(e) < 10)
 		res += ft_vector_append(frmt, "0", 1);
-	_itoa_base(frmt, e, 10, 0);
+	itoa_base(frmt, e, 10, 0);
 	return (res);
 }
 
-int signed_double_a(t_specifiers *sp, t_vector *frmt, long double arg, char *c)
+int			signed_double_a(t_specifiers *sp,
+		t_vector *frmt, long double arg, char *c)
 {
 	int res;
 	int p;
@@ -102,9 +104,9 @@ int signed_double_a(t_specifiers *sp, t_vector *frmt, long double arg, char *c)
 	p = 0;
 	p = (sp->len_mod == 'L' ? findlp(&arg, p) : findp(&arg, p));
 	if (*c == 'p')
-		res = _rtoa(frmt, ABS(arg), 16, sp);
+		res = rtoa(frmt, ABS(arg), 16, sp);
 	else
-		res = _rtoa(frmt, ABS(arg), -16, sp);
+		res = rtoa(frmt, ABS(arg), -16, sp);
 	if (sp->precision == -1)
 		ft_vector_pop_zerohex(frmt, &res);
 	res += ft_vector_append(frmt, c, 1);
@@ -112,7 +114,7 @@ int signed_double_a(t_specifiers *sp, t_vector *frmt, long double arg, char *c)
 		res += ft_vector_append(frmt, "+", 1);
 	else
 		res += ft_vector_append(frmt, "-", 1);
-	_itoa_base(frmt, p, 10, 0);
+	itoa_base(frmt, p, 10, 0);
 	return (res);
 }
 
