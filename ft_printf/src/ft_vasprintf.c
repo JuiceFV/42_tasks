@@ -120,12 +120,3 @@ int					ft_vasprintf(char **ret, char const *s, va_list ap)
 	*ret = frmt.data;
 	return (frmt.size - 1);
 }
-/*
-** TODO
-** Finished | +
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

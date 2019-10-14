@@ -124,13 +124,3 @@ int		signed_double_e(t_specifiers *sp, t_vector *frmt,
 	itoa_base(frmt, e, 10, 0);
 	return (res);
 }
-/*
-** TODO
-** signed_double_g and signed_double_a doesn't created
-** Finished | -
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

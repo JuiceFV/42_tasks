@@ -46,12 +46,3 @@ long int	round_base(double x, double f, int b)
 		return (x);
 	}
 }
-/*
-** TODO
-** Finished | -
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

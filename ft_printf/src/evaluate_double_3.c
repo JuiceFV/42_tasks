@@ -117,13 +117,3 @@ int			signed_double_a(t_specifiers *sp,
 	itoa_base(frmt, p, 10, 0);
 	return (res);
 }
-
-/*
-** TODO
-** Finished | -
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

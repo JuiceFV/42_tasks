@@ -67,13 +67,3 @@ char	*ft_rasprintf(int *res, char const *format, ...)
 	va_end(ap);
 	return (ret);
 }
-
-/*
-** TODO
-** Finished | +
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

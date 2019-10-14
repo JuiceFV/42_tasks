@@ -49,12 +49,3 @@ int	ev_cw(t_specifiers *sp, t_vector *frmt, va_list ap)
 	ft_vector_append(frmt, "m", 1);
 	return (1);
 }
-/*
-** TODO
-** Finished | +
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

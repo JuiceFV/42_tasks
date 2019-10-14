@@ -104,13 +104,3 @@ int			ev_c(t_specifiers *sp, t_vector *frmt, va_list ap)
 	ft_vector_append(frmt, (void *)&arg, 1);
 	return (1);
 }
-/*
-** TODO
-** rename ev_wc and ev_ws to ev_r and ev_cr
-** Finished | -
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

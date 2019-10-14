@@ -108,12 +108,3 @@ int		ev_n(t_specifiers *sp, t_vector *frmt, va_list ap)
 		*(int *)arg = (int)frmt->size;
 	return (0);
 }
-/*
-** TODO
-** Finished | +
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

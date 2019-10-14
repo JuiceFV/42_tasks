@@ -138,12 +138,3 @@ int		ev_ce(t_specifiers *sp, t_vector *frmt, va_list ap)
 	arg = ABS(arg);
 	return (signed_double_e(sp, frmt, arg, "E"));
 }
-/*
-** TODO
-** Finished | +
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

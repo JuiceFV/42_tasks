@@ -95,12 +95,3 @@ int					unsigned_integer(t_specifiers *sp,
 		res += quote_div(frmt, ',');
 	return (res);
 }
-/*
-** TODO
-** Finished | +
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

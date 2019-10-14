@@ -112,16 +112,3 @@ int				evaluate_all(t_specifiers *sp, t_vector *frmt,
 	}
 	return (width);
 }
-
-/*
-** TODO
-** Fixed date func. Recall wchar func's to %r.
-** Doesn't evaluated: ev_y, ev_r, ev_cr
-** (i will rewrite this func's to wc, ws), ev_q, ev_cq, ev_m
-** Finished | -
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

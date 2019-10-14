@@ -66,12 +66,3 @@ int				ev_m(t_specifiers *sp, t_vector *frmt, va_list ap)
 	print_mem(arg, sp->size, frmt);
 	return (1);
 }
-/*
-** TODO
-** Finished | -
-** Norme 	| -
-** Errors	| -
-** Logic 	| -
-** Checked	| -
-** included	| -
-*/

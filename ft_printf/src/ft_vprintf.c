@@ -30,13 +30,3 @@ int		ft_vdprintf(int fd, char const *format, va_list ap)
 	free(str);
 	return (res);
 }
-
-/*
-** TODO
-** Finished | +
-** Norme    | -
-** Errors   | -
-** Logic    | -
-** Checked  | -
-** included | -
-*/
