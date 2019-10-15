@@ -104,5 +104,6 @@ float				ft_derivative(float indexes[], int degree, float x);
 char				*ft_itoa_base(int num, int base);
 int					ft_abs(int x);
 int					ft_hexisdigit(char c);
+size_t				ft_number_of_words(char const *s, char c);
 
 #endif
