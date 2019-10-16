@@ -1,14 +1,23 @@
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int main()
+# include <libft.h>
+
+typedef	struct 			s_ps_node
 {
-	t_ps_stack	a;
-	t_ps_stack	b;
-	t_list		*opt;
+	int					key;
+	struct s_ps_node	*next;
+	struct s_ps_node	*prev;
+}						t_ps_node;
 
-	if (!create_stack(&a, &b, argv, argc))
-	{
-		ft_dprintf(2, "Error\n");
-		return (-1);
-	}
-}
+typedef struct 			s_ps_stack
+{
+	t_ps_node			*begin;
+	t_ps_node			*end;
+	t_ps_node			**p;
+	int					top;
+	int					argc;
+}						t_ps_stack;
+
+
+#endif

@@ -132,6 +132,7 @@ int					ev_cw(t_specifiers *sp, t_vector *frmt, va_list ap);
 
 int					ev_k(t_specifiers *sp, t_vector *frmt, va_list ap);
 int					ev_m(t_specifiers *sp, t_vector *frmt, va_list ap);
+int					ev_cq(t_specifiers *sp, t_vector *frmt, va_list ap);
 /*
 ** TODO
 ** Finished | +

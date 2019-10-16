@@ -105,6 +105,7 @@ FT_PRINTF_SRC:= evaluate_char \
 				ft_printf \
 				ft_vasprintf \
 				ft_vprintf \
+				other_data \
 				utils
 
 FILES:= ft_date get_next_line
