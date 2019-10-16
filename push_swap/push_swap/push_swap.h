@@ -1,11 +1,11 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <libft.h>
+# include "libft.h"
 
 typedef	struct 			s_ps_node
 {
-	int					key;
+	int					value;
 	struct s_ps_node	*next;
 	struct s_ps_node	*prev;
 }						t_ps_node;
@@ -19,5 +19,6 @@ typedef struct 			s_ps_stack
 	int					argc;
 }						t_ps_stack;
 
-
+int	is_int(int argc, char **argv);
+int is_dupl(t_ps_stack *a, int argc);
 #endif

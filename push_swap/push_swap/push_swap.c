@@ -11,4 +11,5 @@ int main()
 		ft_dprintf(2, "Error\n");
 		return (-1);
 	}
+	return (0);
 }
