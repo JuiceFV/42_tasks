@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 13:00:02 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/03 16:20:47 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/17 13:44:13 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "ft_vector.h"
 # include "get_next_line.h"
 # include "ft_date.h"
+# include "ft_printf.h"
 
 # define FT_ULONG_MAX		((unsigned long)(~0L))
 # define FT_LONG_MAX		((long)(FT_ULONG_MAX >> 1))
@@ -105,5 +106,8 @@ char				*ft_itoa_base(int num, int base);
 int					ft_abs(int x);
 int					ft_hexisdigit(char c);
 size_t				ft_number_of_words(char const *s, char c);
+t_list				*ft_lstnew_str(char *content);
+void				ft_lstadd_end(t_list **alst, t_list *new);
+t_list				*ft_lstnew_str(char *content);
 
 #endif

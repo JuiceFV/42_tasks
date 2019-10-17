@@ -65,7 +65,9 @@ FT_LST_SRC:= ft_lstnew \
 		   	 ft_lstdel \
 		     ft_lstadd \
 		   	 ft_lstiter \
-		   	 ft_lstmap 
+		   	 ft_lstmap \
+			 ft_lstadd_end \
+			 ft_lstnew_str 
 
 FT_MAT_PATH:= ft_math/
 FT_MAT_SRC:= ft_polynomial \

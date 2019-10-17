@@ -1,26 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors_handler.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/17 14:34:48 by cspider           #+#    #+#             */
+/*   Updated: 2019/10/17 15:39:19 by cspider          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-/*
-** Didn't check
-** specific case with an arg == 00000000...0<number>
-*/
-static int true_int(char *argv)
-{
-	const int num = ft_atoi(argv);
-	if (num == 0 || num == -1)
-	{
-		if (argv[0] == '-' || argv[0] == '+')
-		{
-			if (num == 0 && argv[1] != '0')
-				return (0);
-			else if (num == -1 && argv[1] != '1')
-				return (0);
-		}
-		else
-			if (num == 0 && argv[0] != '0')
-				return (0);
-	}
-	return (1);
-}
+
 int	is_int(int argc, char **argv)
 {
 	int i;
@@ -38,20 +29,18 @@ int	is_int(int argc, char **argv)
 			j++;
 		if (argv[i][j])
 			return (0);
-		if (!true_int(argv[i]))
-			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int is_dupl(t_ps_stack *a, int argc)
+int	is_dupl(t_ps_stack *a, int argc)
 {
-	t_ps_node *tmp;
-	int		i;
-	int		j;
-	int		k;
-	int		arr[argc + 1];
+	t_ps_node	*tmp;
+	int			i;
+	int			j;
+	int			k;
+	int			arr[argc + 1];
 
 	tmp = a->begin;
 	i = 0;
@@ -67,6 +56,6 @@ int is_dupl(t_ps_stack *a, int argc)
 		while (++k < i)
 			if (arr[j] == arr[k])
 				return (0);
-	}
+	}	
 	return (1);
 }

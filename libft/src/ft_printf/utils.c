@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 14:29:46 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/06 17:07:21 by olongbot         ###   ########.fr       */
+/*   Updated: 2019/10/12 15:27:33 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ long int	round_base(double x, double f, int b)
 ** Logic 	| -
 ** Checked	| -
 ** included	| -
+** Artz lox
 */
