@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:59:40 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/17 16:59:42 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/17 17:25:12 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	get_count(t_ps_stack *s)
 {
 	int			count;
-	t_ps_node 	*tmp;
+	t_ps_node	*tmp;
 
 	tmp = s->begin;
 	count = 0;

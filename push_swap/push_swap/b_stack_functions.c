@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:29:05 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/17 16:29:07 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/17 17:33:37 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 long	special_median_b(t_ps_stack *b)
 {
-	t_ps_node *tmp;
-	int		arr[7];
-	int		i;
-	int		j[2];
+	t_ps_node	*tmp;
+	int			arr[7];
+	int			i;
+	int			j[2];
 
 	tmp = b->begin;
 	i = 0;
@@ -43,8 +43,8 @@ long	special_median_b(t_ps_stack *b)
 
 int		deal_lower_b(t_ps_stack *b, char *cmnds, int med, int count[2])
 {
-	int		skips;
-	t_ps_node *tmp;
+	int			skips;
+	t_ps_node	*tmp;
 
 	skips = 0;
 	tmp = b->begin;

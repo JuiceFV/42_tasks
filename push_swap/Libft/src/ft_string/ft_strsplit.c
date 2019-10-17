@@ -6,14 +6,14 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 10:22:39 by cspider           #+#    #+#             */
-/*   Updated: 2019/09/04 10:35:17 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/17 17:21:47 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-size_t	ft_number_of_words(char const *s, char c)
+size_t			ft_number_of_words(char const *s, char c)
 {
 	size_t words;
 

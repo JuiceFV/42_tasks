@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 14:34:48 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/17 15:39:19 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/17 17:34:04 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int	is_dupl(t_ps_stack *a, int argc)
 		while (++k < i)
 			if (arr[j] == arr[k])
 				return (0);
-	}	
+	}
 	return (1);
 }

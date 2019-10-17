@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:33:24 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/17 15:15:02 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/17 17:29:39 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,15 @@ void					sort_a(t_ps_stack *a, int count, char *tmp);
 
 t_list					*solver(t_ps_stack *a, t_ps_stack *b);
 void					b_to_a(t_ps_stack *a, t_ps_stack *b, t_list **cmnd);
-void					push_b(t_ps_stack *b, t_ps_stack *a, int count, char *tmp);
+void					push_b(t_ps_stack *b, t_ps_stack *a,
+											int count, char *tmp);
 int						sorted(t_ps_stack *a);
 
 long					special_median_b(t_ps_stack *b);
-int						deal_lower_b(t_ps_stack *b, char *cmnds, int med, int count[2]);
-void					split_round_median_b(t_ps_stack *a, t_ps_stack *b, int med, char *cmnds);
+int						deal_lower_b(t_ps_stack *b, char *cmnds,
+										int med, int count[2]);
+void					split_round_median_b(t_ps_stack *a, t_ps_stack *b,
+											int med, char *cmnds);
 void					three_caseb(t_ps_stack *a, char *tmp);
 void					sort_b(t_ps_stack *b, int count, char *tmp);
 int						get_count(t_ps_stack *s);
