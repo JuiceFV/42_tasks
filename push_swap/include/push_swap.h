@@ -77,5 +77,11 @@ void					three_caseb(t_ps_stack *a, char *tmp);
 void					sort_b(t_ps_stack *b, int count, char *tmp);
 int						get_count(t_ps_stack *s);
 int						get_true_median(t_ps_stack *a);
+void					swapper(char *line, t_ps_stack *a, t_ps_stack *b);
+void					rotater(char *line, t_ps_stack *a, t_ps_stack *b);
+void					rev_rotater(char *line, t_ps_stack *a, t_ps_stack *b);
+void					print_res(t_ps_stack *a, t_ps_stack *b, int ok);
+int						check_a(t_ps_stack *a);
+
 
 #endif
