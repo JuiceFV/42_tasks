@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:33:24 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/17 17:29:39 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/21 16:37:09 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,5 @@ void					rotater(char *line, t_ps_stack *a, t_ps_stack *b);
 void					rev_rotater(char *line, t_ps_stack *a, t_ps_stack *b);
 void					print_res(t_ps_stack *a, t_ps_stack *b, int ok);
 int						check_a(t_ps_stack *a);
-
 
 #endif

@@ -50,7 +50,7 @@ $(NAME): $(OBJ) $(OBJ_C)
 $(NAME_PS): $(OBJ) $(OBJ_PS)
 	@cd $(LFTDIR) && $(MAKE)
 	@echo $(CYAN) " - Compiling $@" $(RED)
-	@$(COMPILER) $(CFLAGS) $(SRC) $(LFLAGS) $(SRCPATH)$(PS_SRC).c -o $(NAME_PS)
+	@$(COMPILER) $(CFLAGS) $(SRC) $(LFLAGS) $(SRC_PS) -o $(NAME_PS)
 	@echo $(GREEN) " - OK" $(EOC)
 
 $(OBJPATH)%.o: $(SRCPATH)%.c | $(CCHF)
