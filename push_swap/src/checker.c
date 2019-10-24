@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 12:49:20 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/21 15:56:53 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/24 13:08:31 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ int		main(int argc, char **argv)
 
 	if (argc >= 2)
 	{
-		create_stack(&a, &b, argv, argc);
+		if (!create_stack(&a, &b, argv, argc))
+			return (-1);
 		while (get_next_line(0, &l) > 0)
 		{
 			checker(&a, &b, &l);

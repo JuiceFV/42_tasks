@@ -15,7 +15,7 @@ FILES:= a_stack_functions \
 
 LFTDIR:=./Libft
 
-COMPILER:=gcc
+COMPILER:=clang
 SRCPATH:=src/
 INCLPATH:=include/
 OBJPATH:=obj/
@@ -39,12 +39,12 @@ SRC_C:=$(addprefix $(SRCPATH),$(addsuffix .c,$(C_SRC)))
 OBJ_C:=$(addprefix $(OBJPATH),$(addsuffix .o,$(C_SRC)))
 CCHF:=.cache_exists
 
-all: $(NAME_PS) $(NAME)
+all: $(NAME) $(NAME_PS)
 
 $(NAME): $(OBJ) $(OBJ_C)
 	@cd $(LFTDIR) && $(MAKE)
 	@echo $(CYAN) " - Compiling $@" $(RED)
-	@$(COMPILER) $(CFLAGS) $(SRC) $(LFLAGS) $(SRCPATH)$(C_SRC).c -o $(NAME)
+	@$(COMPILER) $(CFLAGS) $(SRC) $(LFLAGS) $(SRC_C) -o $(NAME)
 	@echo $(GREEN) " - OK" $(EOC)
 
 $(NAME_PS): $(OBJ) $(OBJ_PS)
@@ -76,3 +76,5 @@ fclean: clean
 
 re: fclean
 	@$(MAKE) all
+
+.PHONY: all clean fclean re
