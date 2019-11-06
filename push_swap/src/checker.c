@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: olongbot <olongbot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 12:49:20 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/24 13:08:31 by cspider          ###   ########.fr       */
+/*   Updated: 2019/11/06 20:59:58 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,16 @@ int		main(int argc, char **argv)
 
 	if (argc >= 2)
 	{
-		if (!create_stack(&a, &b, argv, argc))
+		if (!create_stack(&a, &b, &argv, &argc))
 			return (-1);
+		fill_num_pos(&a);
+		print_stacks(&a, &b);
 		while (get_next_line(0, &l) > 0)
 		{
 			checker(&a, &b, &l);
 			free(l);
+			print_stacks(&a, &b);
+			system("sleep 0.05");
 		}
 		(!check_a(&a) || b.begin) ? print_res(&a, &b, 0) : 0;
 		print_res(&a, &b, 1);

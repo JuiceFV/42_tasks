@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: olongbot <olongbot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:33:24 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/21 16:37:09 by cspider          ###   ########.fr       */
+/*   Updated: 2019/11/06 19:06:31 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef	struct			s_ps_node
 	int					value;
 	struct s_ps_node	*next;
 	struct s_ps_node	*prev;
+	int					order_num;
+
 }						t_ps_node;
 
 typedef	struct			s_ps_stack
@@ -36,7 +38,7 @@ typedef	struct			s_ps_stack
 */
 
 int						create_stack(t_ps_stack *a, t_ps_stack *b,
-												char **argv, int argc);
+													char ***v, int *c);
 int						stck_append_end(char *str, t_ps_node **back);
 
 /*
@@ -82,5 +84,8 @@ void					rotater(char *line, t_ps_stack *a, t_ps_stack *b);
 void					rev_rotater(char *line, t_ps_stack *a, t_ps_stack *b);
 void					print_res(t_ps_stack *a, t_ps_stack *b, int ok);
 int						check_a(t_ps_stack *a);
+
+void					fill_num_pos(t_ps_stack *a);
+void					print_stacks(t_ps_stack *a, t_ps_stack *b);
 
 #endif

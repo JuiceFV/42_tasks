@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: olongbot <olongbot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 16:36:17 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/21 16:36:20 by cspider          ###   ########.fr       */
+/*   Updated: 2019/11/06 20:52:18 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,31 +43,36 @@ void			free_all(t_ps_stack *a, t_list *cmnd)
 	free(a->els);
 }
 
+int				keklol(void)
+{
+	ft_dprintf(2, "Error\n");
+	return (1);
+}
+
 int				main(int argc, char **argv)
 {
 	t_ps_stack	a;
 	t_ps_stack	b;
 	t_list		*cmnd;
+	t_list		*tmp;
 
 	if (argc >= 2)
 	{
-		if (!create_stack(&a, &b, argv, argc))
-		{
-			ft_dprintf(2, "Error\n");
+		if (!create_stack(&a, &b, &argv, &argc) && keklol())
 			return (-1);
-		}
 		if (!(a.els = (t_ps_node **)malloc(sizeof(t_ps_node*) * argc)) ||
 		!(b.els = (t_ps_node **)malloc(sizeof(t_ps_node*) * argc)))
 			return (-1);
 		stack_const(&a, &b, argc);
 		cmnd = solver(&a, &b);
+		tmp = cmnd;
 		while (cmnd != NULL)
 		{
 			ft_putstr((char *)cmnd->content);
 			cmnd = cmnd->next;
 		}
 		free(b.els);
-		free_all(&a, cmnd);
+		free_all(&a, tmp);
 	}
 	return (0);
 }

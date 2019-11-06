@@ -10,7 +10,8 @@ FILES:= a_stack_functions \
 		   median \
 		   solver \
 		   stack_opers \
-		   run_cmnds
+		   run_cmnds \
+		   visual
 
 
 LFTDIR:=./Libft
