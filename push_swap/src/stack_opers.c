@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:37:04 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/24 13:06:57 by cspider          ###   ########.fr       */
+/*   Updated: 2019/10/24 14:02:12 by cspider          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,22 @@ int	create_stack(t_ps_stack *a, t_ps_stack *b, char **v, int c)
 {
 	int			i;
 	t_ps_node	*tmp;
+	int			is_single;
 
 	i = 1;
+	is_single = 0;
+	if (c - i == 1)
+	{
+		c = ft_number_of_words(v[i], ' ');
+		v = ft_strsplit(v[i], ' ');
+		i = 0;
+		is_single = 1;
+	}
 	if (!is_int(c, v) || !(a->begin = (t_ps_node *)malloc(sizeof(t_ps_node))))
+	{
+		is_single ? ft_free_words(v, c) : 0;
 		return (0);
+	}
 	a->begin->value = ft_atoi(v[i++]);
 	a->begin->prev = NULL;
 	a->end = a->begin;
@@ -58,5 +70,6 @@ int	create_stack(t_ps_stack *a, t_ps_stack *b, char **v, int c)
 	}
 	b->begin = NULL;
 	b->end = NULL;
+	is_single ? ft_free_words(v, c) : 0;
 	return (1);
 }

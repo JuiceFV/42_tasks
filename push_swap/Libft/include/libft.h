@@ -109,5 +109,6 @@ size_t				ft_number_of_words(char const *s, char c);
 t_list				*ft_lstnew_str(char *content);
 void				ft_lstadd_end(t_list **alst, t_list *new);
 t_list				*ft_lstnew_str(char *content);
+void				ft_free_words(char **words, size_t i);
 
 #endif

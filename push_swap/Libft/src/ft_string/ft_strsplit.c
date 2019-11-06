@@ -43,7 +43,7 @@ static char		*ft_get_word(char *word, char c)
 	return (ft_strdup(start));
 }
 
-static void		ft_free_words(char **words, size_t i)
+void		ft_free_words(char **words, size_t i)
 {
 	while (i--)
 		ft_strdel(&(words[i]));
