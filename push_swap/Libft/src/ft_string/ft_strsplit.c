@@ -6,7 +6,7 @@
 /*   By: cspider <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 10:22:39 by cspider           #+#    #+#             */
-/*   Updated: 2019/10/17 17:21:47 by cspider          ###   ########.fr       */
+/*   Updated: 2019/11/08 15:21:14 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ static char		*ft_get_word(char *word, char c)
 	return (ft_strdup(start));
 }
 
-void		ft_free_words(char **words, size_t i)
+void			ft_free_words(char **words, size_t i)
 {
 	while (i--)
 		ft_strdel(&(words[i]));
 	free(*words);
+	free(words);
 }
 
 static char		**ft_get_words(char *s, char c, size_t number_of_words)

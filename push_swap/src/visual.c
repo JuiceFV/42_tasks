@@ -6,7 +6,7 @@
 /*   By: olongbot <olongbot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:23:09 by olongbot          #+#    #+#             */
-/*   Updated: 2019/11/06 19:41:06 by olongbot         ###   ########.fr       */
+/*   Updated: 2019/11/08 19:01:12 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	fill_num_pos(t_ps_stack *a)
 		while (min->order_num != -1)
 			min = min->next;
 		tmp = min;
-		while (tmp)
+		while (tmp != NULL)
 		{
 			if (tmp->value < min->value && tmp->order_num == -1)
 				min = tmp;
@@ -74,7 +74,7 @@ void	print_stacks(t_ps_stack *a, t_ps_stack *b)
 	i = 0;
 	while (tmp1 != NULL || tmp2 != NULL)
 	{
-		tmp = (100 - ((i >= max - stack_lenght(a) && tmp1 != NULL) ?
+		tmp = ((max * 2) - ((i >= max - stack_lenght(a) && tmp1 != NULL) ?
 	tmp1->order_num : 0) - ((i >= max - stack_lenght(b) && tmp2 != NULL) ?
 	tmp2->order_num : 0));
 		if (i >= max - stack_lenght(a) && tmp1 != NULL)

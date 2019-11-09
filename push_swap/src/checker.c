@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: olongbot <olongbot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 12:49:20 by cspider           #+#    #+#             */
-/*   Updated: 2019/11/06 20:59:58 by olongbot         ###   ########.fr       */
+/*   Created: 2019/10/18 12:49:20 by olongbot          #+#    #+#             */
+/*   Updated: 2019/11/08 19:09:33 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_res(t_ps_stack *a, t_ps_stack *b, int ok)
+void	print_res(t_ps_stack *a, t_ps_stack *b, int ok, int korol_loh)
 {
 	t_ps_node *tmp;
 
@@ -28,10 +28,15 @@ void	print_res(t_ps_stack *a, t_ps_stack *b, int ok)
 		b->begin = tmp->next;
 		free(tmp);
 	}
-	if (ok)
-		ft_putstr("OK\n");
-	if (!ok)
-		ft_putstr("KO\n");
+	if (korol_loh == 1)
+		ft_dprintf(2, "Error\n");
+	else
+	{
+		if (ok)
+			ft_putstr("OK\n");
+		if (!ok)
+			ft_putstr("KO\n");
+	}
 	exit(1);
 }
 
@@ -65,7 +70,7 @@ void	checker(t_ps_stack *a, t_ps_stack *b, char **l)
 				!ft_strcmp(*l, "rrr"))
 		rev_rotater(*l, a, b);
 	else
-		print_res(a, b, 0);
+		print_res(a, b, 0, 1);
 }
 
 int		main(int argc, char **argv)
@@ -77,7 +82,10 @@ int		main(int argc, char **argv)
 	if (argc >= 2)
 	{
 		if (!create_stack(&a, &b, &argv, &argc))
+		{
+			ft_dprintf(2, "Error\n");
 			return (-1);
+		}
 		fill_num_pos(&a);
 		print_stacks(&a, &b);
 		while (get_next_line(0, &l) > 0)
@@ -87,8 +95,8 @@ int		main(int argc, char **argv)
 			print_stacks(&a, &b);
 			system("sleep 0.05");
 		}
-		(!check_a(&a) || b.begin) ? print_res(&a, &b, 0) : 0;
-		print_res(&a, &b, 1);
+		(!check_a(&a) || b.begin) ? print_res(&a, &b, 0, 0) : 0;
+		print_res(&a, &b, 1, 0);
 	}
 	return (0);
 }

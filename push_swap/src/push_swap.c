@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: olongbot <olongbot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:36:17 by cspider           #+#    #+#             */
-/*   Updated: 2019/11/06 20:52:18 by olongbot         ###   ########.fr       */
+/*   Created: 2019/10/21 16:36:17 by olongbot          #+#    #+#             */
+/*   Updated: 2019/11/07 19:41:15 by olongbot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	void	stack_const(t_ps_stack *a, t_ps_stack *b, int argc)
+static void		stack_construct(t_ps_stack *a, t_ps_stack *b, int argc)
 {
 	a->argc = argc;
 	b->argc = argc;
@@ -60,10 +60,10 @@ int				main(int argc, char **argv)
 	{
 		if (!create_stack(&a, &b, &argv, &argc) && keklol())
 			return (-1);
-		if (!(a.els = (t_ps_node **)malloc(sizeof(t_ps_node*) * argc)) ||
-		!(b.els = (t_ps_node **)malloc(sizeof(t_ps_node*) * argc)))
+		if (!(a.els = (t_ps_node **)malloc(sizeof(t_ps_node *) * argc)) ||
+			!(b.els = (t_ps_node **)malloc(sizeof(t_ps_node *) * argc)))
 			return (-1);
-		stack_const(&a, &b, argc);
+		stack_construct(&a, &b, argc);
 		cmnd = solver(&a, &b);
 		tmp = cmnd;
 		while (cmnd != NULL)
