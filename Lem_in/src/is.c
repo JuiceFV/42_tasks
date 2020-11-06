@@ -1,0 +1,91 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olongbot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/12 13:34:39 by olongbot          #+#    #+#             */
+/*   Updated: 2018/10/26 23:59:47 by olongbot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "lem_in.h"
+
+int			is_command(char *str)
+{
+	if (str)
+	{
+		if (ft_strlen(str) >= 2
+			&& !ft_strncmp(str, "##", 2))
+			return (1);
+	}
+	return (0);
+}
+
+int			is_comment(char *str)
+{
+	if (str)
+	{
+		if (ft_strlen(str)
+			&& !is_command(str)
+			&& !ft_strncmp(str, "#", 1))
+			return (1);
+	}
+	return (0);
+}
+
+static int	is_room_name(char *str)
+{
+	if (str && ft_strlen(str))
+	{
+		if (str[0] != 'L' && str[0] != '#')
+			return (1);
+	}
+	return (0);
+}
+
+int			is_room(char *str)
+{
+	int		result;
+	char	**strsplit;
+
+	result = 0;
+	if (!(strsplit = ft_strsplit(str, ' ')))
+		terminate("ERROR");
+	if (ft_strsplit_len(strsplit) == 3)
+	{
+		if (is_room_name(strsplit[0])
+			&& ft_isint(strsplit[1], 1)
+			&& ft_isint(strsplit[2], 1))
+			result = 1;
+	}
+	ft_strsplit_free(&strsplit);
+	return (result);
+}
+
+int			is_location(t_lem_in *lem_in, char *str)
+{
+	int		result;
+	char	*dash;
+	char	*ant_number;
+	char	*room_name;
+
+	result = 0;
+	if (ft_strlen(str) < 1 && str[0] != 'L')
+		terminate("ERROR");
+	if (!(dash = ft_strchr(str, '-')))
+		terminate("ERROR");
+	if (!(ant_number = ft_strsub(str, 1, dash - str - 1)))
+		terminate("ERROR");
+	if (!(room_name = ft_strsub(dash + 1, 0, ft_strlen(dash + 1))))
+		terminate("ERROR");
+	if (find_room(lem_in, room_name)
+		&& ft_isint(ant_number, 1)
+		&& ft_atoi(ant_number) >= 1
+		&& ft_atoi(ant_number) <= lem_in->ants_start)
+		result = 1;
+	free(ant_number);
+	free(room_name);
+	return (result);
+}
