@@ -63,29 +63,3 @@ int			is_room(char *str)
 	ft_strsplit_free(&strsplit);
 	return (result);
 }
-
-int			is_location(t_lem_in *lem_in, char *str)
-{
-	int		result;
-	char	*dash;
-	char	*ant_number;
-	char	*room_name;
-
-	result = 0;
-	if (ft_strlen(str) < 1 && str[0] != 'L')
-		terminate("ERROR");
-	if (!(dash = ft_strchr(str, '-')))
-		terminate("ERROR");
-	if (!(ant_number = ft_strsub(str, 1, dash - str - 1)))
-		terminate("ERROR");
-	if (!(room_name = ft_strsub(dash + 1, 0, ft_strlen(dash + 1))))
-		terminate("ERROR");
-	if (find_room(lem_in, room_name)
-		&& ft_isint(ant_number, 1)
-		&& ft_atoi(ant_number) >= 1
-		&& ft_atoi(ant_number) <= lem_in->ants_start)
-		result = 1;
-	free(ant_number);
-	free(room_name);
-	return (result);
-}

@@ -18,7 +18,6 @@
 
 # define FT_UINT_MAX	((unsigned)(~0L))
 # define FT_INT_MAX		((int)(FT_UINT_MAX >> 1))
-# define FT_INT_MIN		((int)(~FT_INT_MAX))
 
 typedef struct			s_line
 {
@@ -103,15 +102,11 @@ void					parse_rooms(t_lem_in *lem_in, t_line **current,
 							t_line **lines);
 void					parse_links(t_lem_in *lem_in, t_line **current,
 							t_line **lines);
-t_location				*parse_locations(t_lem_in *lem_in, char *str);
-void					parse_turns(t_lem_in *lem_in, t_line **current,
-							t_line **lines);
 void					validate_room(t_lem_in *lem_in, t_room *room);
 void					validate_link(t_lem_in *lem_in, t_link *link);
 int						is_command(char *str);
 int						is_comment(char *str);
 int						is_room(char *str);
-int						is_location(t_lem_in *lem_in, char *str);
 void					swap_rooms(t_room **start, t_room **end);
 void					bfs(t_lem_in *lem_in);
 void					align_links(t_lem_in *lem_in);

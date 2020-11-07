@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: olongbot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/09/10 16:42:09 by olongbot          #+#    #+#              #
-#    Updated: 2020/10/25 19:30:09 by olongbot         ###   ########.fr        #
+#    Created: 2020/09/10 16:22:09 by olongbot          #+#    #+#              #
+#    Updated: 2020/10/25 19:31:09 by olongbot         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,7 +29,6 @@ SOURCES_LIST := main.c \
 	parse.c\
 	parse_rooms.c\
 	parse_links.c\
-	parse_locations.c\
 	is.c\
 	validate.c\
 	bfs.c\
